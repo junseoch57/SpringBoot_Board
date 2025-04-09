@@ -1,6 +1,7 @@
 package com.example.board.entity;
 
 
+import com.example.board.dto.BoardDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +35,19 @@ public class BoardEntity {
 
     @Column
     private int boardHits;
+
+    public static BoardEntity toSaveEntity(BoardDTO boardDTO){
+
+        // dto에 담긴 값들을 entity객체로 옮겨담음
+        BoardEntity boardEntity = new BoardEntity();
+        boardEntity.setBoardWriter(boardDTO.getBoardWriter());
+        boardEntity.setBoardPass(boardDTO.getBoardPass());
+        boardEntity.setBoardTitle(boardDTO.getBoardTitle());
+        boardEntity.setBoardContentes(boardDTO.getBoardContents());
+        boardEntity.setBoardHits(0);
+        return boardEntity;
+
+    }
 
 
 
